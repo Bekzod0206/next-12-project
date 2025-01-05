@@ -12,7 +12,7 @@ function Footer() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: 'primary.main',
+        backgroundColor: '#141414',
         color: 'white'
       }}
     >

@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // experimental: {
-  //   appDir: false
-  // }
+  reactStrictMode: true,
+  images: {
+    domains: ['media.graphassets.com'],
+  },
 };
 
 export default nextConfig;
