@@ -1,8 +1,14 @@
 import { Avatar, Box, Divider, Typography } from "@mui/material"
 import Image from "next/image"
 import { format } from 'date-fns'
+import { useEffect, useState } from "react"
 
 function Content() {
+  const [currDate, setCurrDate] = useState<Date | null>(null);
+  useEffect(() => {
+    setCurrDate(new Date());
+  }, []);
+
   return (
     <Box width={{xs: '100%', md: '70%'}}>
       {data.map(item => (
@@ -28,7 +34,8 @@ function Content() {
             <Avatar alt={item.author.name} src={item.author.image} />
             <Box>
               <Typography>{item.author.name}</Typography>
-              <Box>{ format(new Date(), 'dd MMM, yyyy') } &#x2022; 10min read</Box>
+              {/* <Box>{ format(new Date(), 'dd MMM, yyyy') } &#x2022; 10min read</Box> */}
+              <Box>{ currDate && format(currDate, 'dd MMM, yyyy') } &#x2022; 10min read</Box>
             </Box>
           </Box>
         </Box>

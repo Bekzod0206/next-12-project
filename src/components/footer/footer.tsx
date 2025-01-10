@@ -3,8 +3,14 @@ import { format } from 'date-fns'
 import TelegramIcon from '@mui/icons-material/Telegram';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import { useEffect, useState } from "react";
 
 function Footer() {
+  const [currDate, setCurrDate] = useState<Date | null>(null);
+  useEffect(() => {
+    setCurrDate(new Date());
+  }, []);
+
   return (
     <Box
       padding={'20px'}
@@ -17,7 +23,7 @@ function Footer() {
       }}
     >
       <Typography>
-        © Beka, {format(new Date, 'yyyy')}. All rights reserved.
+        © Beka, {currDate && format(currDate, 'yyyy')}. All rights reserved.
       </Typography>
       <Box sx={{display: 'flex', gap: '15px'}}>
         <TelegramIcon sx={{cursor: 'pointer'}} />

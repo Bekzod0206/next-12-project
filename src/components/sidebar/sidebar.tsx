@@ -1,10 +1,15 @@
 import { navItems } from "@/config/constants"
 import { Avatar, Box, Button, Divider, Typography } from "@mui/material"
 import Image from "next/image"
-import { Fragment } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { format } from 'date-fns'
 
 function Sidebar() {
+  const [currDate, setCurrDate] = useState<Date | null>(null);
+  useEffect(() => {
+    setCurrDate(new Date());
+  }, []);
+  
   return (
       <Box width={{xs: '100%', md: '30%'}}>
         <Box position={'sticky'} top={'100px'} sx={{transition: 'all .3s ease'}}>
@@ -32,7 +37,7 @@ function Sidebar() {
                         <Avatar alt={item.author.name} src={item.author.image} />
                         <Box>
                           <Typography variant="body2">{item.author.name}</Typography>
-                          <Box sx={{opacity: '.6'}}>{ format(new Date(), 'dd MMM, yyyy') }</Box>
+                          <Box sx={{opacity: '.6'}}>{ currDate && format(currDate, 'dd MMM, yyyy') }</Box>
                         </Box>
                       </Box>
                     </Box>

@@ -3,8 +3,14 @@ import { Avatar, Box, Typography } from "@mui/material"
 import Carousel from 'react-multi-carousel';
 import Image from 'next/image';
 import { format } from 'date-fns'
+import { useEffect, useState } from 'react';
 
 function Hero() {
+  const [currDate, setCurrDate] = useState<Date | null>(null);
+  useEffect(() => {
+    setCurrDate(new Date());
+  }, []);
+
   return (
     <Box width={'100%'} height={'70vh'}>
       <Carousel
@@ -44,7 +50,7 @@ function Hero() {
                   <Avatar alt={item.author.name} src={item.author.image} />
                   <Box>
                     <Typography>{item.author.name}</Typography>
-                    <Box>{ format(new Date(), 'dd MMM, yyyy') } &#x2022; 10min read</Box>
+                    <Box>{ currDate && format(currDate, 'dd MMM, yyyy') } &#x2022; 10min read</Box>
                   </Box>
                 </Box>
               </Box>
