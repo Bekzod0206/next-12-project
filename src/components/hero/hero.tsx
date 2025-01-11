@@ -5,9 +5,11 @@ import Image from 'next/image';
 import { format } from 'date-fns'
 import { HeroProps } from './hero.props';
 import { calculateEstimatedTimeToRead } from '@/helpers/time.format';
+import { useRouter } from 'next/router';
 
 function Hero({blogs}: HeroProps) {
 
+  const router = useRouter()
   const handleDate = (date: Date): Date => {
     return new Date(date)
   }
@@ -24,7 +26,7 @@ function Hero({blogs}: HeroProps) {
       >
         {blogs.map(item => (
           <Box key={item.id}>
-            <Box sx={{ position: 'relative', width: '100%', height: '70vh' }}>
+            <Box sx={{ position: 'relative', width: '100%', height: '70vh' }} onClick={() => router.push(`/blog/${item.slug}`)}>
               <Image src={item.image.url} alt={item.title} fill style={{ objectFit: 'cover' }}/>
               <Box
                 sx={{

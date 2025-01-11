@@ -4,9 +4,10 @@ import Image from "next/image"
 import { Fragment, useEffect, useState } from "react"
 import { format } from 'date-fns'
 import { SidebarProps } from "./sidebar.props"
+import { useRouter } from "next/router"
 
 function Sidebar({latestBlogs, categroies}: SidebarProps) {
-  
+  const router = useRouter()
   const handleDate = (date: Date): Date => {
     return new Date(date)
   }
@@ -23,7 +24,7 @@ function Sidebar({latestBlogs, categroies}: SidebarProps) {
             <Typography variant="h5">Latest blog</Typography>
             <Box sx={{display: 'flex', flexDirection: 'column', marginTop: '20px'}}>
               {latestBlogs.map(item => (
-                <Box key={item.id} marginTop={'20px'}>
+                <Box key={item.id} marginTop={'20px'} sx={{cursor: 'pointer'}} onClick={() => router.push(`/blog/${item.slug}`)}>
                   <Box sx={{display: 'flex', gap: '20px', alignItems: 'center'}}>
                     <Image
                       src={item.image.url}

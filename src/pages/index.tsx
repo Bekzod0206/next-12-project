@@ -13,7 +13,7 @@ function Index({blogs, latestBlogs, categroies}: HomePageProps) {
 
   return (
     <Layout>
-      <Hero blogs={blogs.slice()}/>
+      <Hero blogs={blogs.slice(0, 3)}/>
       <Box sx={{display: 'flex', gap: '20px', flexDirection: {xs: 'column', md: 'row'}, padding: '20px'}}>
         <Sidebar latestBlogs={latestBlogs} categroies={categroies} />
         <Content blogs={blogs} />

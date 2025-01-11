@@ -4,9 +4,11 @@ import { format } from 'date-fns'
 import { useEffect, useState } from "react"
 import { ContentProps } from "./content.props";
 import { calculateEstimatedTimeToRead } from "@/helpers/time.format";
+import { useRouter } from "next/router";
 
 function Content({blogs}: ContentProps) {
-  
+
+  const router = useRouter()
   const handleDate = (date: Date): Date => {
     return new Date(date)
   }
@@ -21,8 +23,10 @@ function Content({blogs}: ContentProps) {
             padding: '20px',
             marginTop: '20px',
             borderRadius: '8px',
-            boxShadow: '0 8px 16px rgba(255, 255, 255, .1)'
+            boxShadow: '0 8px 16px rgba(255, 255, 255, .1)',
+            cursor: 'pointer'
           }}
+          onClick={() => router.push(`blog/${item.slug}`)}
         >
           <Box position={'relative'} width={'100%'} height={{xs: '30vh', md: '50vh'}}>
             <Image src={item.image.url} alt={item.title} fill style={{objectFit: 'cover', borderRadius: '10px'}} />
