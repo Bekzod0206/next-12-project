@@ -3,6 +3,7 @@ import Image from "next/image"
 import { format } from 'date-fns'
 import { useEffect, useState } from "react"
 import { ContentProps } from "./content.props";
+import { calculateEstimatedTimeToRead } from "@/helpers/time.format";
 
 function Content({blogs}: ContentProps) {
   
@@ -35,7 +36,7 @@ function Content({blogs}: ContentProps) {
             <Avatar alt={item.author.name} src={item.author.avatar.url} />
             <Box>
               <Typography>{item.author.name}</Typography>
-              <Box>{ format(handleDate(item.createdAt), 'dd MMM, yyyy') } &#x2022; 10min read</Box>
+              <Box>{ format(handleDate(item.createdAt), 'dd MMM, yyyy') } &#x2022; {calculateEstimatedTimeToRead(item.description.text)}min read</Box>
             </Box>
           </Box>
         </Box>
