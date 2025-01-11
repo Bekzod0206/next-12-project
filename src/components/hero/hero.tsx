@@ -3,13 +3,13 @@ import { Avatar, Box, Typography } from "@mui/material"
 import Carousel from 'react-multi-carousel';
 import Image from 'next/image';
 import { format } from 'date-fns'
-import { useEffect, useState } from 'react';
+import { HeroProps } from './hero.props';
 
-function Hero() {
-  const [currDate, setCurrDate] = useState<Date | null>(null);
-  useEffect(() => {
-    setCurrDate(new Date());
-  }, []);
+function Hero({blogs}: HeroProps) {
+
+  const handleDate = (date: Date): Date => {
+    return new Date(date)
+  }
 
   return (
     <Box width={'100%'} height={'70vh'}>
@@ -21,10 +21,10 @@ function Hero() {
           }
         }} 
       >
-        {data.map(item => (
-          <Box key={item.image}>
+        {blogs.map(item => (
+          <Box key={item.id}>
             <Box sx={{ position: 'relative', width: '100%', height: '70vh' }}>
-              <Image src={item.image} alt={item.title} fill style={{ objectFit: 'cover' }}/>
+              <Image src={item.image.url} alt={item.title} fill style={{ objectFit: 'cover' }}/>
               <Box
                 sx={{
                   position: 'absolute',
@@ -45,12 +45,12 @@ function Hero() {
                 sx={{ top: '50%', transform: 'translateY(-50%)', paddingLeft: {xs: '10px', md: '50px'} }}
               >
                 <Typography sx={{fontSize: {xs: '30px', md: '50px'}}}>{  item.title}</Typography>
-                <Typography color={'gray'} sx={{fontSize: {xs: '20px', md: '25px'}}}>{item.exert}</Typography>
+                <Typography color={'gray'} sx={{fontSize: {xs: '20px', md: '25px'}}}>{item.exerpt}</Typography>
                 <Box sx={{display: 'flex', gap: '15px', marginTop: '20px', alignItems: 'center'}}>
-                  <Avatar alt={item.author.name} src={item.author.image} />
+                  <Avatar alt={item.author.name} src={item.author.avatar.url} />
                   <Box>
                     <Typography>{item.author.name}</Typography>
-                    <Box>{ currDate && format(currDate, 'dd MMM, yyyy') } &#x2022; 10min read</Box>
+                    <Box>{ format(handleDate(item.createdAt), 'dd MMM, yyyy') } &#x2022; 10min read</Box>
                   </Box>
                 </Box>
               </Box>

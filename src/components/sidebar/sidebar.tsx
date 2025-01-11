@@ -3,13 +3,14 @@ import { Avatar, Box, Button, Divider, Typography } from "@mui/material"
 import Image from "next/image"
 import { Fragment, useEffect, useState } from "react"
 import { format } from 'date-fns'
+import { SidebarProps } from "./sidebar.props"
 
-function Sidebar() {
-  const [currDate, setCurrDate] = useState<Date | null>(null);
-  useEffect(() => {
-    setCurrDate(new Date());
-  }, []);
+function Sidebar({latestBlogs, categroies}: SidebarProps) {
   
+  const handleDate = (date: Date): Date => {
+    return new Date(date)
+  }
+
   return (
       <Box width={{xs: '100%', md: '30%'}}>
         <Box position={'sticky'} top={'100px'} sx={{transition: 'all .3s ease'}}>
@@ -21,11 +22,11 @@ function Sidebar() {
           >
             <Typography variant="h5">Latest blog</Typography>
             <Box sx={{display: 'flex', flexDirection: 'column', marginTop: '20px'}}>
-              {data.map(item => (
-                <Box key={item.title} marginTop={'20px'}>
+              {latestBlogs.map(item => (
+                <Box key={item.id} marginTop={'20px'}>
                   <Box sx={{display: 'flex', gap: '20px', alignItems: 'center'}}>
                     <Image
-                      src={item.image}
+                      src={item.image.url}
                       alt={item.title}
                       width={100}
                       height={100}
@@ -34,10 +35,10 @@ function Sidebar() {
                     <Box sx={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
                       <Typography variant="body1">{item.title}</Typography>
                       <Box sx={{display: 'flex', gap: '15px'}}>
-                        <Avatar alt={item.author.name} src={item.author.image} />
+                        <Avatar alt={item.author.name} src={item.author.avatar.url} />
                         <Box>
                           <Typography variant="body2">{item.author.name}</Typography>
-                          <Box sx={{opacity: '.6'}}>{ currDate && format(currDate, 'dd MMM, yyyy') }</Box>
+                          <Box sx={{opacity: '.6'}}>{ format(handleDate(item.createdAt), 'dd MMM, yyyy') }</Box>
                         </Box>
                       </Box>
                     </Box>
@@ -55,8 +56,8 @@ function Sidebar() {
           >
             <Typography variant="h5">Category</Typography>
             <Box sx={{display: 'flex', flexDirection: 'column', marginTop: '20px'}}>
-              {navItems.map(item => (
-                <Fragment key={item.route}>
+              {categroies.map(item => (
+                <Fragment key={item.slug}>
                   <Button fullWidth sx={{justifyContent: 'flex-start', height: '50px'}}>
                     {item.label}
                   </Button>

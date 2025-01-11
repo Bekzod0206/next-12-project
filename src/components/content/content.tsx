@@ -2,18 +2,19 @@ import { Avatar, Box, Divider, Typography } from "@mui/material"
 import Image from "next/image"
 import { format } from 'date-fns'
 import { useEffect, useState } from "react"
+import { ContentProps } from "./content.props";
 
-function Content() {
-  const [currDate, setCurrDate] = useState<Date | null>(null);
-  useEffect(() => {
-    setCurrDate(new Date());
-  }, []);
+function Content({blogs}: ContentProps) {
+  
+  const handleDate = (date: Date): Date => {
+    return new Date(date)
+  }
 
   return (
     <Box width={{xs: '100%', md: '70%'}}>
-      {data.map(item => (
+      {blogs.map(item => (
         <Box
-          key={item.image}
+          key={item.id}
           sx={{
             backgroundColor: 'rgba(0, 0, 0, .5)',
             padding: '20px',
@@ -23,19 +24,18 @@ function Content() {
           }}
         >
           <Box position={'relative'} width={'100%'} height={{xs: '30vh', md: '50vh'}}>
-            <Image src={item.image} alt={item.title} fill style={{objectFit: 'cover', borderRadius: '10px'}} />
+            <Image src={item.image.url} alt={item.title} fill style={{objectFit: 'cover', borderRadius: '10px'}} />
           </Box>
           <Typography variant="h4" marginTop={'30px'}>{item.title}</Typography>
-          <Typography variant="body1" color={'gray'}>{item.exert}</Typography>
+          <Typography variant="body1" color={'gray'}>{item.exerpt}</Typography>
           
           <Divider sx={{marginTop: '30px'}} />
           
           <Box sx={{display: 'flex', gap: '15px', marginTop: '20px', alignItems: 'center'}}>
-            <Avatar alt={item.author.name} src={item.author.image} />
+            <Avatar alt={item.author.name} src={item.author.avatar.url} />
             <Box>
               <Typography>{item.author.name}</Typography>
-              {/* <Box>{ format(new Date(), 'dd MMM, yyyy') } &#x2022; 10min read</Box> */}
-              <Box>{ currDate && format(currDate, 'dd MMM, yyyy') } &#x2022; 10min read</Box>
+              <Box>{ format(handleDate(item.createdAt), 'dd MMM, yyyy') } &#x2022; 10min read</Box>
             </Box>
           </Box>
         </Box>
