@@ -21,6 +21,7 @@ function Footer() {
         backgroundColor: '#141414',
         color: 'white'
       }}
+      borderTop={'1px solid rgba(255, 255, 255, .5)'}
     >
       <Typography>
         © Beka, {currDate && format(currDate, 'yyyy')}. All rights reserved.

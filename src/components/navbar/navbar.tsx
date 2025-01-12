@@ -1,10 +1,11 @@
 import { navItems } from "@/config/constants"
-import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Button, Divider, Drawer, Icon, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import AdjustIcon from '@mui/icons-material/Adjust';
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 
 interface Props {
@@ -20,21 +21,21 @@ function Navbar({window}: Props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box sx={{ textAlign: 'center' }}>
       <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingX: '15px'}}>
         <Box sx={{display: 'flex', alignItems: 'center', my: 2, gap: '5px'}}>
-          <AdjustIcon />
-          <Typography variant="h6">
+          <Image src={'/vercel.svg'} alt="home-icon" height={50} width={50}  />
+          <Typography variant="h4">
             Beka
           </Typography>
         </Box>
-        <CloseIcon />
+        <CloseIcon onClick={handleDrawerToggle} sx={{cursor: 'pointer'}} />
       </Box>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item.route} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
+            <ListItemButton onClick={() => router.push(item.route)} sx={{ textAlign: 'center' }}>
               <ListItemText primary={item.label} />
             </ListItemButton>
           </ListItem>
@@ -45,9 +46,9 @@ function Navbar({window}: Props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box height={'10vh'} sx={{display: 'flex'}}>
-      <AppBar component="nav" sx={{height: '10vh', backgroundColor: '#141414'}}>
-      <Toolbar>
+    <Box height={'9vh'} sx={{display: 'flex'}}>
+      <AppBar component="nav" sx={{backgroundColor: '#141414', height: '9vh'}}>
+        <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -57,9 +58,19 @@ function Navbar({window}: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, alignItems: 'center', my: 2, gap: '5px'}}>
-            <AdjustIcon />
-            <Typography variant="h6">
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'none', sm: 'flex' },
+              alignItems: 'center',
+              my: 2,
+              gap: '10px',
+              cursor: 'pointer'
+            }}
+            onClick={() => router.push('/')}
+          >
+            <Image src={'/vercel.svg'} alt="home-icon" height={50} width={50}  />
+            <Typography variant="h4">
               Beka
             </Typography>
           </Box>
