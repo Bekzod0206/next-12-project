@@ -26,7 +26,7 @@ function Content({blogs}: ContentProps) {
             boxShadow: '0 8px 16px rgba(255, 255, 255, .1)',
             cursor: 'pointer'
           }}
-          onClick={() => router.push(`blog/${item.slug}`)}
+          onClick={() => router.push(`/blog/${item.slug}`)}
         >
           <Box position={'relative'} width={'100%'} height={{xs: '30vh', md: '50vh'}}>
             <Image src={item.image.url} alt={item.title} fill style={{objectFit: 'cover', borderRadius: '10px'}} />
