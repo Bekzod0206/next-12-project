@@ -1,7 +1,6 @@
 import { Avatar, Box, Divider, Typography } from "@mui/material"
 import Image from "next/image"
 import { format } from 'date-fns'
-import { useEffect, useState } from "react"
 import { ContentProps } from "./content.props";
 import { calculateEstimatedTimeToRead } from "@/helpers/time.format";
 import { useRouter } from "next/router";
@@ -50,24 +49,3 @@ function Content({blogs}: ContentProps) {
 }
 
 export default Content
-
-const data = [
-  {
-    image: 'https://media.graphassets.com/MxJZhmooRRuudoErkQ38',
-    title: 'Tehnical SEO with Hyghraph',
-    exert: 'Get started with your SEO implementation when usin a Headless CMS',
-    author: {
-      name: 'Bekzod Davronov',
-      image: 'https://media.graphassets.com/DkfNqQNGRz2F4UFntKQx'
-    },
-  },
-  {
-    image: 'https://media.graphassets.com/MxJZhmooRRuudoErkQ38',
-    title: 'Tehnical SEO with Hyghraph',
-    exert: 'Get started with your SEO implementation when usin a Headless CMS',
-    author: {
-      name: 'Bekzod Davronov',
-      image: 'https://media.graphassets.com/DkfNqQNGRz2F4UFntKQx'
-    },
-  }
-]

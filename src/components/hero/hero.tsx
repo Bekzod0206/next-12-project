@@ -66,24 +66,3 @@ function Hero({blogs}: HeroProps) {
 }
 
 export default Hero
-
-const data = [
-  {
-    image: 'https://media.graphassets.com/MxJZhmooRRuudoErkQ38',
-    title: 'Tehnical SEO with Hyghraph',
-    exert: 'Get started with your SEO implementation when usin a Headless CMS',
-    author: {
-      name: 'Bekzod Davronov',
-      image: 'https://media.graphassets.com/DkfNqQNGRz2F4UFntKQx'
-    },
-  },
-  {
-    image: 'https://media.graphassets.com/MxJZhmooRRuudoErkQ38',
-    title: 'Tehnical SEO with Hyghraph',
-    exert: 'Get started with your SEO implementation when usin a Headless CMS',
-    author: {
-      name: 'Bekzod Davronov',
-      image: 'https://media.graphassets.com/DkfNqQNGRz2F4UFntKQx'
-    },
-  }
-]

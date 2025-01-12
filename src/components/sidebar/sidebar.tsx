@@ -1,7 +1,6 @@
-import { navItems } from "@/config/constants"
 import { Avatar, Box, Button, Divider, Typography } from "@mui/material"
 import Image from "next/image"
-import { Fragment, useEffect, useState } from "react"
+import { Fragment } from "react"
 import { format } from 'date-fns'
 import { SidebarProps } from "./sidebar.props"
 import { useRouter } from "next/router"
@@ -78,24 +77,3 @@ function Sidebar({latestBlogs, categroies}: SidebarProps) {
 }
 
 export default Sidebar
-
-const data = [
-  {
-    image: 'https://media.graphassets.com/MxJZhmooRRuudoErkQ38',
-    title: 'Tehnical SEO with Hyghraph',
-    exert: 'Get started with your SEO implementation when usin a Headless CMS',
-    author: {
-      name: 'Bekzod Davronov',
-      image: 'https://media.graphassets.com/DkfNqQNGRz2F4UFntKQx'
-    },
-  },
-  {
-    image: 'https://media.graphassets.com/MxJZhmooRRuudoErkQ38',
-    title: 'Tehnical SEO with Hyghraph',
-    exert: 'Get started with your SEO implementation when usin a Headless CMS',
-    author: {
-      name: 'Bekzod Davronov',
-      image: 'https://media.graphassets.com/DkfNqQNGRz2F4UFntKQx'
-    },
-  }
-]

@@ -4,10 +4,9 @@ import { CategoryType } from '@/interfaces/categories.interface'
 import Layout from '@/layout/layout'
 import SEO from '@/layout/seo/seo'
 import { BlogService } from '@/services/blog.service'
-import { Box, Button } from '@mui/material'
+import { Box } from '@mui/material'
 import { GetServerSideProps } from 'next'
-import Head from 'next/head'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 function Index({blogs, latestBlogs, categroies}: HomePageProps) {
 

@@ -1,8 +1,7 @@
 import { navItems } from "@/config/constants"
-import { AppBar, Box, Button, Divider, Drawer, Icon, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import AdjustIcon from '@mui/icons-material/Adjust';
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
