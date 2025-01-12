@@ -59,7 +59,11 @@ function Sidebar({latestBlogs, categroies}: SidebarProps) {
             <Box sx={{display: 'flex', flexDirection: 'column', marginTop: '20px'}}>
               {categroies.map(item => (
                 <Fragment key={item.slug}>
-                  <Button fullWidth sx={{justifyContent: 'flex-start', height: '50px'}}>
+                  <Button
+                    onClick={() => router.push(`/category/${item.slug}`)}
+                    fullWidth
+                    sx={{justifyContent: 'flex-start', height: '50px'}}
+                  >
                     {item.label}
                   </Button>
                   <Divider />
